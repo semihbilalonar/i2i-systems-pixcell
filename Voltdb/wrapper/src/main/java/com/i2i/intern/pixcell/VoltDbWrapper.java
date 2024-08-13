@@ -2,6 +2,7 @@ package com.i2i.intern.pixcell;
 
 import org.voltdb.VoltTable;
 import org.voltdb.client.*;
+
 import java.io.IOException;
 import java.util.Arrays;
 
@@ -10,12 +11,7 @@ public class VoltDbWrapper {
 
     private final String IP = "35.198.145.16";
     private final int PORT = 32794;
-
     private final Client clientInstance;
-
-    public Client getClientInstance() {
-        return clientInstance;
-    }
 
     public VoltDbWrapper() {
         ClientConfig config = new ClientConfig();
@@ -23,17 +19,6 @@ public class VoltDbWrapper {
         try {
             clientInstance.createConnection(IP, PORT);
         } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public void InitBalance(int cust_id, int package_id, int bal_lvl_money) {
-        ClientResponse response = null;
-
-        try {
-            response = clientInstance.callProcedure("InitBalance", cust_id, package_id, bal_lvl_money);
-        }
-        catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
@@ -47,6 +32,8 @@ public class VoltDbWrapper {
         catch (Exception e) {
             throw new RuntimeException(e);
         }
+
+        InitBalance(msisdn);
     }
 
     public int getUserID(long MSISDN) {
@@ -116,7 +103,7 @@ public class VoltDbWrapper {
         return null;
     }
 
-    private VoltTable getPackageDetails(int packageId) {
+    public VoltTable getPackageDetails(int packageId) {
         ClientResponse response = null;
 
         try {
@@ -197,6 +184,46 @@ public class VoltDbWrapper {
         return -1;
     }
 
+    public void setMinutesBalance(int amount_minutes, long MSISDN) {
+        ClientResponse response = null;
+        try {
+            response = clientInstance.callProcedure("UpdateCustomerMinutes", amount_minutes, MSISDN);
+        }
+        catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void setInternetBalance(int amount_internet, long MSISDN) {
+        ClientResponse response = null;
+        try {
+            response = clientInstance.callProcedure("UpdateCustomerData", amount_internet, MSISDN);
+        }
+        catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void setSmsBalance(int amount_sms, long MSISDN) {
+        ClientResponse response = null;
+        try {
+            response = clientInstance.callProcedure("UpdateCustomerSms", amount_sms, MSISDN);
+        }
+        catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void setMoneyBalance(int amount_money, long MSISDN) {
+        ClientResponse response = null;
+        try {
+            response = clientInstance.callProcedure("UpdateCustomerMoney", amount_money, MSISDN);
+        }
+        catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public void updateVoiceBalance(long MSISDN, int amount) {
         int currentBalance = getMinutesBalance(MSISDN);
         int newBalance = currentBalance + amount;
@@ -221,40 +248,35 @@ public class VoltDbWrapper {
         setMoneyBalance(newBalance, MSISDN);
     }
 
-    private void setMinutesBalance(int amount_minutes, long MSISDN) {
+    public void setCustomerBalanceByPackageId(long MSISDN, int package_id) {
+        var table = getPackageDetails(package_id);
+
+        int packageId = (int) table.get(0);
+        String packageName = (String) table.get(1);
+        int packagePrice = (int) table.get(2);
+        int min = (int) table.get(3);
+        int data = (int) table.get(4);
+        int sms = (int) table.get(5);
+        int period = (int) table.get(6);
+
         ClientResponse response = null;
+
         try {
-            response = clientInstance.callProcedure("UpdateCustomerMinutes", amount_minutes, MSISDN);
+            response = clientInstance.callProcedure("SetBalanceByPackageId", package_id, min, sms, data, packagePrice, getUserID(MSISDN));
         }
         catch (Exception e) {
             throw new RuntimeException(e);
         }
+
     }
 
-    private void setInternetBalance(int amount_internet, long MSISDN) {
-        ClientResponse response = null;
-        try {
-            response = clientInstance.callProcedure("UpdateCustomerData", amount_internet, MSISDN);
-        }
-        catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
+    // ---- PRIVATE
 
-    private void setSmsBalance(int amount_sms, long MSISDN) {
+    private void InitBalance(int cust_id, int package_id, int bal_lvl_money) {
         ClientResponse response = null;
-        try {
-            response = clientInstance.callProcedure("UpdateCustomerSms", amount_sms, MSISDN);
-        }
-        catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
 
-    private void setMoneyBalance(int amount_money, long MSISDN) {
-        ClientResponse response = null;
         try {
-            response = clientInstance.callProcedure("UpdateCustomerMoney", amount_money, MSISDN);
+            response = clientInstance.callProcedure("InitBalance", cust_id, package_id, bal_lvl_money);
         }
         catch (Exception e) {
             throw new RuntimeException(e);
@@ -269,6 +291,10 @@ public class VoltDbWrapper {
         }
         System.out.println(Arrays.toString(response.getResults()));
         return false;
+    }
+
+    private void InitBalance(long msisdn) {
+        InitBalance(getUserID(msisdn), -1, 1000);
     }
 }
 
