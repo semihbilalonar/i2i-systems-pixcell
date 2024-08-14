@@ -1,18 +1,17 @@
 import com.i2i.intern.pixcell.VoltDbWrapper;
 
+import java.io.Console;
+
 public class Test {
     public static void main(String[] args) {
-        var wrapper = new VoltDbWrapper();
-        var internet = wrapper.getPackageInternet(1);
-        var sms = wrapper.getPackageSms(1);
-        var minutes = wrapper.getPackageMinutes(1);
-        var price = wrapper.getPackagePrıce(1);
-        var name = wrapper.getPackageName(1);
+        VoltDbWrapper wrapper = new VoltDbWrapper();
 
-        System.out.println(internet);
-        System.out.println(sms);
-        System.out.println(minutes);
-        System.out.println(price);
-        System.out.println(name);
+        var list = wrapper.getPackageIds();
+
+        for (var id : list) {
+            System.out.println(id);
+        }
+
+
     }
 }

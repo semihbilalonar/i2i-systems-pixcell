@@ -4,7 +4,10 @@ import org.voltdb.VoltTable;
 import org.voltdb.client.*;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
 
 
 public class VoltDbWrapper {
@@ -135,6 +138,34 @@ public class VoltDbWrapper {
         return null;
     }
 
+    public int[] getPackageIds() {
+        VoltTable table = null;
+        ClientResponse response = null;
+
+        try {
+            response = clientInstance.callProcedure("GetPackageIds");
+        }
+        catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        if (checkResponse(response)) {
+            table =  response.getResults()[0];
+        }
+        else {
+            return null;
+        }
+
+        int[] packageIds = new int[table.getRowCount()];
+
+        for (int i = 0; i < table.getRowCount(); i++) {
+            packageIds[i] = (int) table.getLong(0);
+            table.advanceRow();
+        }
+
+        return packageIds;
+    }
+
     public int getPackageInternet(int package_id) {
         ClientResponse response = null;
 
@@ -197,6 +228,33 @@ public class VoltDbWrapper {
             return (int) response.getResults()[0].getLong(0);
         }
         return -1;
+    }
+
+    public List<List<Object>> AllPackages() {
+        VoltTable table = null;
+        ClientResponse response = null;
+        List<List<Object>> packages = new ArrayList<>();
+
+        try {
+            response = clientInstance.callProcedure("AllPackages");
+        }
+        catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        if (checkResponse(response)) {
+            table =  response.getResults()[0];
+        }
+        else {
+            return null;
+        }
+
+        for (int i = 0; i < table.getRowCount(); i++) {
+            packages.add(List.of(table.getRowObjects()));
+            table.advanceRow();
+        }
+
+        return packages;
     }
 
     public String getPackageName(int package_id) {
