@@ -16,7 +16,7 @@ public class KafkaOperator {
     private final String topicCHF = "CHF";
     private final String topicBalance = "balanceTopic";
     private final String topicUsage = "usage";
-    private final String topicNotification= "sms";
+    private final String topicNotification= "notification";
 
     public KafkaOperator() {
         Properties props = new Properties();
