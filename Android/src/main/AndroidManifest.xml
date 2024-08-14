@@ -18,9 +18,6 @@
             android:name=".screens.BalanceInfoScreen"
             android:exported="false" />
         <activity
-            android:name=".screens.PackageScreen"
-            android:exported="false" />
-        <activity
             android:name=".screens.ForgotPasswordScreen"
             android:exported="false" />
         <activity
