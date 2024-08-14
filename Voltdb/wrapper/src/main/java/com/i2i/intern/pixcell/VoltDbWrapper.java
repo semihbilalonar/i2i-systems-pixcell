@@ -36,6 +36,21 @@ public class VoltDbWrapper {
         InitBalance(msisdn);
     }
 
+    public void InsertCustomerWithPackage(long msisdn, String name, String surname, String email, String password, String status, String securityKey, int package_id) {
+        ClientResponse response = null;
+
+        try {
+            response = clientInstance.callProcedure("InsertCustomer", msisdn, name, surname, email, password, status, securityKey);
+        }
+        catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        InitBalance(msisdn);
+        setCustomerBalanceByPackageId(msisdn, package_id);
+        updateMoneyBalance(msisdn, getPackagePrıce(package_id));
+    }
+
     public int getUserID(long MSISDN) {
         ClientResponse response = null;
 
@@ -119,6 +134,103 @@ public class VoltDbWrapper {
 
         return null;
     }
+
+    public int getPackageInternet(int package_id) {
+        ClientResponse response = null;
+
+        try {
+            response = clientInstance.callProcedure("GetAmountData", package_id);
+        }
+        catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        if (checkResponse(response)) {
+            return (int) response.getResults()[0].getLong(0);
+        }
+        return -1;
+    }
+
+    public int getPackageSms(int package_id) {
+        ClientResponse response = null;
+
+        try {
+            response = clientInstance.callProcedure("GetAmountSMS", package_id);
+        }
+        catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        if (checkResponse(response)) {
+            return (int) response.getResults()[0].getLong(0);
+        }
+        return -1;
+    }
+
+    public int getPackageMinutes(int package_id) {
+        ClientResponse response = null;
+
+        try {
+            response = clientInstance.callProcedure("GetAmountMinutes", package_id);
+        }
+        catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        if (checkResponse(response)) {
+            return (int) response.getResults()[0].getLong(0);
+        }
+        return -1;
+    }
+
+    public int getPackagePrıce(int package_id) {
+        ClientResponse response = null;
+
+        try {
+            response = clientInstance.callProcedure("GetPackagePrice", package_id);
+        }
+        catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        if (checkResponse(response)) {
+            return (int) response.getResults()[0].getLong(0);
+        }
+        return -1;
+    }
+
+    public String getPackageName(int package_id) {
+        ClientResponse response = null;
+
+        try {
+            response = clientInstance.callProcedure("GetPackageName", package_id);
+        }
+        catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        if (checkResponse(response)) {
+            return (String) response.getResults()[0].getString(0);
+        }
+        return null;
+    }
+
+    public int getPackagePeriod(int package_id) {
+        ClientResponse response = null;
+
+        try {
+            response = clientInstance.callProcedure("GetPackagePeriod ", package_id);
+        }
+        catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        if (checkResponse(response)) {
+            return (int) response.getResults()[0].getLong(0);
+        }
+        return -1;
+    }
+
 
     public int getInternetBalance(long MSISDN) {
         ClientResponse response = null;
@@ -242,7 +354,7 @@ public class VoltDbWrapper {
         setSmsBalance(newBalance, MSISDN);
     }
 
-    public void updateMoneyBalance(int amount, long MSISDN) {
+    public void updateMoneyBalance(long MSISDN, int amount) {
         int currentBalance = getMoneyBalance(MSISDN);
         int newBalance = currentBalance + amount;
         setMoneyBalance(newBalance, MSISDN);
@@ -251,7 +363,6 @@ public class VoltDbWrapper {
     public void setCustomerBalanceByPackageId(long MSISDN, int package_id) {
         var table = getPackageDetails(package_id);
 
-        int packageId = (int) table.get(0);
         String packageName = (String) table.get(1);
         int packagePrice = (int) table.get(2);
         int min = (int) table.get(3);
@@ -270,7 +381,7 @@ public class VoltDbWrapper {
 
     }
 
-    // ---- PRIVATE
+    // ---- PRIVATE,
 
     private void InitBalance(int cust_id, int package_id, int bal_lvl_money) {
         ClientResponse response = null;
