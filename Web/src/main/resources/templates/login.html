@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PixCell Sign In</title>
+    <link rel="stylesheet" href="/css/login.css">
+</head>
+<body>
+<div class="container">
+    <h1>PixCell</h1>
+    <form th:action="@{/login}" method="post">
+        <span class="span">Phone Number</span>
+        <input type="text" placeholder="" >
+
+        <span class="span">Password</span>
+        <input type="password" placeholder="" >
+
+        <div class="remember-me">
+            <label>
+                <input type="checkbox"> Remember Me
+            </label>
+            <span class="forgot-password">
+                    <a th:href="@{/forgotPassword}">Forgot Password</a>
+                </span>
+        </div>
+        <button type="submit">Sign In</button>
+    </form>
+    <div class="sign-up">
+        <p>Don't have an account?   <a th:href="@{/register}">Sign Up </a>  </p>
+    </div>
+</div>
+</body>
+</html>
+

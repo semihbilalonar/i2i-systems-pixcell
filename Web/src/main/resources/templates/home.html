@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PixCell Sign In</title>
+    <link rel="stylesheet" href="/css/home.css">
+</head>
+<body>
+<div class="container">
+    <h2>Welcome</h2>
+
+    <p class="span">+90 555 555 5555</p>
+    <p class="span">Premium Package</p>
+    <p class="span">Valid Until: 30.08.2024</p>
+
+    <h2>Remainings</h2>
+
+    <div class="usage-container">
+        <div class="usage-item">
+            <div class="circle-container">
+                <div class="circle">
+                    <span class="remaining">65%</span>
+                </div>
+            </div>
+            <div class="usage-info">
+                <p class="p">Internet</p>
+                <h2>5400 GB </h2>
+            </div>
+        </div>
+        <div class="usage-item">
+            <div class="circle-container">
+                <div class="circle">
+                    <span class="remaining">65%</span>
+                </div>
+            </div>
+            <div class="usage-info">
+                <p class="p">Messaging</p>
+                <h2>1000 SMS</h2>
+            </div>
+        </div>
+        <div class="usage-item">
+            <div class="circle-container">
+                <div class="circle">
+                    <span class="remaining">65%</span>
+                </div>
+            </div>
+            <div class="usage-info">
+                <p class="p">Calls</p>
+                <h2>1000 Min.</h2>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="sign-up">
+        <p>
+            <a th:href="@{/logout}" class="sign-out">Sign Out </a>
+        </p>
+
+    </div>
+</div>
+</body>
+</html>
+
