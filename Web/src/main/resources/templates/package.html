@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PixCell Package</title>
+    <link rel="stylesheet" href="/css/package.css">
+</head>
+<body>
+<div class="container">
+    <h1 class="forgot">PixCell</h1>
+
+    <div class="sign-up">
+        <p> Select a package that suits you best.  </p>
+    </div>
+
+    <form th:action="@{/package}" method="post">
+        <div class="dropdown">
+            <div class="dropdown-trigger">
+                Package <span class="arrow"></span>
+            </div>
+            <div class="dropdown-content">
+                <a href="#"> 1</a>
+                <a href="#"> 2</a>
+                <a href="#"> 3</a>
+            </div>
+        </div>
+
+        <button type="submit">Select</button>
+    </form>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,197 @@
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #121212;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.container {
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+    padding: 30px;
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+}
+
+
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+    color: #fff;
+}
+
+input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin: 12px -12px;
+    border-radius: 10px;
+    border: 1px solid #444;
+    background-color: #333;
+    color: #fff;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus, input[type="password"]:focus {
+    border-color: #00adb5;
+    outline: none;
+}
+
+input[type="checkbox"] {
+    margin-right: 5px;
+    font-size:20px;
+}
+.span{
+    color: #999;
+    font-size: 20px;
+}
+.remember-me {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px 0;
+    color: #999;
+    font-size: 20px;
+}
+
+.remember-me label {
+    font-size: 15px;
+    color: #999;
+}
+
+.forgot-password {
+    font-size: 15px;
+}
+
+.forgot-password a {
+    color: #999;
+    text-decoration: none;
+}
+
+.forgot-password a:hover {
+    text-decoration: underline;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    margin: 20px 0;
+    border-radius: 25px;
+    border: none;
+    background-color: #00adb5;
+    color: white;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #007f80;
+    transform: translateY(-2px);
+}
+
+
+.sign-up a {
+    color: #111;
+    text-decoration: none;
+    font-weight: bold;
+    background-color: #fff;
+    width: 25%;
+    padding: 12px;
+    margin: 20px 0;
+    border-radius: 25px;
+    border: none;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.sign-up p{
+    color: #999;
+    font-size: 15px;
+
+}
+.sign-up a:hover {
+    background-color: #00adb5;
+    transform: translateY(-2px);
+}
+
+
+@media (max-width: 500px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    button {
+        font-size: 1rem;
+    }
+
+    .container {
+        padding: 20px;
+    }
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 60px;
+}
+
+.dropdown-trigger {
+    background-color: #e0e0e0;
+    border: 1px solid #b0b0b0;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    width: 200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #333;
+    font-size: 16px;
+}
+
+.arrow {
+    border: solid #333;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 3px;
+    transform: rotate(45deg);
+    transition: transform 0.3s ease;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #ffffff;
+    min-width: 220px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: #333;
+    padding: 10px 15px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #f0f0f0;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+

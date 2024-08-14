@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PixCell Sign Up</title>
+    <link rel="stylesheet" href="/css/register.css">
+
+</head>
+<body>
+<div class="container">
+    <h1>PixCell</h1>
+    <form th:action="@{/register}" method="post">
+        <span class="span">Name</span>
+        <input type="text"  >
+
+        <span class="span">Surname</span>
+        <input type="text"  >
+
+        <span class="span">E-Mail</span>
+        <input type="text"  >
+
+        <span class="span">Phone Number</span>
+        <input type="text" >
+
+        <span class="span">Password</span>
+        <input type="password">
+
+        <span class="span">Confirm Password</span>
+        <input type="password" >
+
+        <button type="submit">Sign Up</button>
+    </form>
+
+</div>
+</body>
+</html>
