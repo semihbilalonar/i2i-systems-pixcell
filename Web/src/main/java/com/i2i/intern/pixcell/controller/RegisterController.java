@@ -16,13 +16,4 @@ public class RegisterController {
         return "redirect:/package";
     }
 
-    @GetMapping("/package")
-    public String showPackage() {
-        return "package";
-    }
-
-    @PostMapping("/package")
-    public String handlePackage() {
-        return "redirect:/login";
-    }
 }
