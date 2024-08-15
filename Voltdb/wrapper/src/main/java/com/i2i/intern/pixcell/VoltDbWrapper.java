@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 
 
 public class VoltDbWrapper {
@@ -40,6 +39,13 @@ public class VoltDbWrapper {
     }
 
     public void InsertCustomerWithPackage(long msisdn, String name, String surname, String email, String password, String status, String securityKey, int package_id) {
+        String msisdnAsString;
+        msisdnAsString = Long.toString(msisdn);
+
+        if (msisdnAsString.length() != 11) {
+            throw new RuntimeException("Invalid msisdn, it must be 11 digits");
+        }
+
         ClientResponse response = null;
 
         try {
@@ -51,7 +57,29 @@ public class VoltDbWrapper {
 
         InitBalance(msisdn);
         setCustomerBalanceByPackageId(msisdn, package_id);
-        updateMoneyBalance(msisdn, getPackagePrıce(package_id));
+    }
+
+    public long[] getAllMsisdns() {
+        ClientResponse response = null;
+        long[] result = null;
+
+        try {
+            response = clientInstance.callProcedure("AllMsisdns");
+        }
+        catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        if (checkResponse(response)) {
+            var rowCount = response.getResults()[0].getRowCount();
+            result = new long[rowCount];
+
+            for (int i = 0; i < rowCount; i++) {
+                result[i] = response.getResults()[0].getLong(0);
+                response.getResults()[0].advanceRow();
+            }
+        }
+        return result;
     }
 
     public int getUserID(long MSISDN) {
@@ -121,7 +149,7 @@ public class VoltDbWrapper {
         return null;
     }
 
-    public VoltTable getPackageDetails(int packageId) {
+    public VoltTable getPackageDetailsByPackageId(int packageId) {
         ClientResponse response = null;
 
         try {
@@ -137,6 +165,89 @@ public class VoltDbWrapper {
 
         return null;
     }
+
+    public Object[] getPackageDetailsByMsisdn(long msisdn) {
+        ClientResponse response = null;
+        Object[] result;
+
+        try {
+            response = clientInstance.callProcedure("PackageDetailsByID", getUserID(msisdn));
+        }
+        catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        if (!checkResponse(response)) {
+            return null;
+        }
+
+        result = new Object[response.getResults()[0].getColumnCount()];
+        for (int i = 0; i < response.getResults()[0].getColumnCount(); i++) {
+            result[i] = response.getResults()[0].get(i);
+        }
+
+        return result;
+    }
+
+    private VoltTable getPackageDetailsByCustomerId(int cust_id) {
+        ClientResponse response = null;
+
+        try {
+            response = clientInstance.callProcedure("PackageDetailsByID", cust_id);
+        }
+        catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        if (checkResponse(response)) {
+            return response.getResults()[0];
+        }
+
+        return response.getResults()[0];
+    }
+
+    public int getCustomerPackageMinutes(long msisdn) {
+        var id = getUserID(msisdn);
+        var table = getPackageDetailsByCustomerId(id);
+
+        return (int) table.getLong("AMOUNT_MINUTES");
+    }
+
+    public int getCustomerPackageSms(long msisdn) {
+        var id = getUserID(msisdn);
+        var table = getPackageDetailsByCustomerId(id);
+
+        return (int) table.getLong("AMOUNT_SMS");
+    }
+
+    public int getCustomerPackageData(long msisdn) {
+        var id = getUserID(msisdn);
+        var table = getPackageDetailsByCustomerId(id);
+
+        return (int) table.getLong("AMOUNT_DATA");
+    }
+
+    public int getCustomerPackagePeriod(long msisdn) {
+        var id = getUserID(msisdn);
+        var table = getPackageDetailsByCustomerId(id);
+
+        return (int) table.getLong("PERIOD");
+    }
+
+    public int getCustomerPackagePrice(long msisdn) {
+        var id = getUserID(msisdn);
+        var table = getPackageDetailsByCustomerId(id);
+
+        return (int) table.getLong("PRICE");
+    }
+
+    public String getCustomerPackageName(long msisdn) {
+        var id = getUserID(msisdn);
+        var table = getPackageDetailsByCustomerId(id);
+
+        return table.getString("PACKAGE_NAME");
+    }
+
 
     public int[] getPackageIds() {
         VoltTable table = null;
@@ -419,7 +530,7 @@ public class VoltDbWrapper {
     }
 
     public void setCustomerBalanceByPackageId(long MSISDN, int package_id) {
-        var table = getPackageDetails(package_id);
+        var table = getPackageDetailsByPackageId(package_id);
 
         String packageName = (String) table.get(1);
         int packagePrice = (int) table.get(2);
