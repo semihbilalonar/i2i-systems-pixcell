@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PixCell Sign In</title>
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+<div class="container">
+    <h1>PixCell</h1>
+    <form id="myForm">
+        <span class="span">Phone Number</span>
+        <input type="text" id="phoneNumber" placeholder="" required>
+
+        <span class="span">Password</span>
+        <input type="password" id="password" placeholder="" required>
+
+        <div class="remember-me">
+            <label>
+                <input type="checkbox" id="rememberMe"> Remember Me
+            </label>
+            <span class="forgot-password">
+                    <a href="/pixcell/static/ForgotPassword/forgotPassword.html">Forgot Password</a>
+                </span>
+        </div>
+        <button type="submit" id="LoginButton">Sign In</button>
+    </form>
+    <div class="sign-up">
+        <p>Don't have an account?   <a href="/pixcell/static/Register/register.html">Sign Up </a>  </p>
+    </div>
+</div>
+</body>
+<script src="js/login.js" type="module"></script>
+</html>
+

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PixCell Sign Up</title>
+  <link rel="stylesheet" href="css/register.css">
+</head>
+<body>
+<div class="container">
+  <h1>PixCell</h1>
+  <form id="signUpForm">
+    <span class="span">Name</span>
+    <input type="text" id="name" required>
+
+    <span class="span">Surname</span>
+    <input type="text" id="surname" required>
+
+    <span class="span">E-Mail</span>
+    <input type="text" id="email" required>
+
+    <span class="span">Phone Number</span>
+    <input type="text" id="phoneNumber" required>
+
+    <span class="span">Password</span>
+    <input type="password" id="password" required>
+
+    <span class="span">Security Key</span>
+    <input type="password" id="securityKey" required>
+
+    <span class="span">Select a package that suits you best.</span>
+    <div class="select-wrapper">
+      <select id="package" name="package" required>
+      </select>
+    </div>
+    <button type="submit">Sign Up</button>
+  </form>
+</div>
+<script src="js/register.js" type="module"></script>
+</body>
+</html>
