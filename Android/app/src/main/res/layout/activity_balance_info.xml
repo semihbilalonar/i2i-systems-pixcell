@@ -127,8 +127,8 @@
             android:id="@+id/txtInternet"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="36dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginStart="52dp"
+            android:layout_marginTop="52dp"
             android:backgroundTint="#FFFFFF"
             android:fontFamily="@font/hedvig_letters_sans"
             android:text="Internet"
@@ -142,7 +142,8 @@
             android:id="@+id/txtSms"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginEnd="8dp"
             android:backgroundTint="#FFFFFF"
             android:fontFamily="@font/hedvig_letters_sans"
             android:text="Messaging"
@@ -156,7 +157,7 @@
             android:id="@+id/txtCall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="36dp"
+            android:layout_marginTop="60dp"
             android:backgroundTint="#FFFFFF"
             android:fontFamily="@font/hedvig_letters_sans"
             android:text="Calls"
@@ -227,7 +228,4 @@
             app:layout_constraintEnd_toEndOf="@+id/progressBarSms"
             app:layout_constraintStart_toStartOf="@+id/progressBarSms"
             app:layout_constraintTop_toTopOf="@+id/progressBarSms" />
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
-
