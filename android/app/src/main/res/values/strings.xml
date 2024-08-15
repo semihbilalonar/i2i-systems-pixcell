@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PixCell</string>
+    <string-array name="packages">
+        <item>Choose a Package</item>
+        <item>Package 1</item>
+        <item>Package 2</item>
+        <item>Package 3</item>
+        <item>Package 4</item>
+        <item>Package 5</item>
+    </string-array>
+</resources>
