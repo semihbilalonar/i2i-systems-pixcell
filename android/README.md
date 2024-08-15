@@ -1,1 +1,0 @@
-# pixcell-android-app
