@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:barrierMargin="2dp"
+    tools:context=".screens.BalanceInfoScreen">
+
+        <TextView
+            android:id="@+id/txtRemaining"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="@font/hedvig_letters_sans"
+            android:text="Remainings"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/progressBarData"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/btnSignOut"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:fontFamily="@font/hedvig_letters_sans"
+            android:text="Sign Out"
+            android:textColor="@color/pixcellblue"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/progressBarMinute" />
+
+        <ProgressBar
+            android:id="@+id/progressBarData"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="190dp"
+            android:layout_height="190dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="20dp"
+            android:indeterminateOnly="false"
+            android:progress="75"
+            android:progressDrawable="@drawable/circle"
+            app:layout_constraintBottom_toTopOf="@+id/progressBarSms"
+            app:layout_constraintEnd_toStartOf="@+id/txtInternet"
+            app:layout_constraintHorizontal_bias="0.28"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:progress="1" />
+
+        <ProgressBar
+            android:id="@+id/progressBarSms"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="190dp"
+            android:layout_height="190dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="20dp"
+            android:indeterminateOnly="false"
+            android:progress="75"
+            android:progressDrawable="@drawable/circle"
+            app:layout_constraintBottom_toTopOf="@+id/progressBarMinute"
+            app:layout_constraintStart_toStartOf="@+id/progressBarData"
+            tools:progress="1" />
+
+        <TextView
+            android:id="@+id/txtMb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="65%"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/progressBarData"
+            app:layout_constraintEnd_toEndOf="@+id/progressBarData"
+            app:layout_constraintStart_toStartOf="@+id/progressBarData"
+            app:layout_constraintTop_toTopOf="@+id/progressBarData" />
+
+        <ProgressBar
+            android:id="@+id/progressBarMinute"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="190dp"
+            android:layout_height="190dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="108dp"
+            android:indeterminateOnly="false"
+            android:progress="75"
+            android:progressDrawable="@drawable/circle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/progressBarSms"
+            tools:progress="1" />
+
+        <TextView
+            android:id="@+id/txtMinutes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="65%"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/progressBarMinute"
+            app:layout_constraintEnd_toEndOf="@+id/progressBarMinute"
+            app:layout_constraintStart_toStartOf="@+id/progressBarMinute"
+            app:layout_constraintTop_toTopOf="@+id/progressBarMinute" />
+
+        <TextView
+            android:id="@+id/txtWelcome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/hedvig_letters_sans"
+            android:text="Welcome,"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txtInternet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="40dp"
+            android:backgroundTint="#FFFFFF"
+            android:fontFamily="@font/hedvig_letters_sans"
+            android:text="Internet"
+            android:textColor="@color/lightblue"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/txtRemaining"
+            app:layout_constraintTop_toTopOf="@+id/progressBarData" />
+
+        <TextView
+            android:id="@+id/txtSms"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:backgroundTint="#FFFFFF"
+            android:fontFamily="@font/hedvig_letters_sans"
+            android:text="Messaging"
+            android:textColor="@color/lightblue"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/txtInternet"
+            app:layout_constraintTop_toTopOf="@+id/progressBarSms" />
+
+        <TextView
+            android:id="@+id/txtCall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:backgroundTint="#FFFFFF"
+            android:fontFamily="@font/hedvig_letters_sans"
+            android:text="Calls"
+            android:textColor="@color/lightblue"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/txtSms"
+            app:layout_constraintTop_toTopOf="@+id/progressBarMinute" />
+
+        <TextView
+            android:id="@+id/txtMinuteInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/hedvig_letters_sans"
+            android:text="Min."
+            android:textColor="#FFFFFF"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/txtCall"
+            app:layout_constraintTop_toBottomOf="@+id/txtCall" />
+
+        <TextView
+            android:id="@+id/txtSmsInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/hedvig_letters_sans"
+            android:text="SMS"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/txtSms"
+            app:layout_constraintTop_toBottomOf="@+id/txtSms" />
+
+        <TextView
+            android:id="@+id/txtMbInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/hedvig_letters_sans"
+            android:text="MB"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/txtInternet"
+            app:layout_constraintTop_toBottomOf="@+id/txtInternet" />
+
+        <TextView
+            android:id="@+id/txtPackageInfo"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textAlignment="center"
+            android:textColor="#8E8E8E"
+            app:layout_constraintBottom_toTopOf="@+id/txtRemaining"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtWelcome" />
+
+        <TextView
+            android:id="@+id/txtSmsCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="65%"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/progressBarSms"
+            app:layout_constraintEnd_toEndOf="@+id/progressBarSms"
+            app:layout_constraintStart_toStartOf="@+id/progressBarSms"
+            app:layout_constraintTop_toTopOf="@+id/progressBarSms" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
