@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ic_launcher_background"
+    tools:context=".screens.SignInScreen">
+
+    <Button
+        android:id="@+id/btnSignUpSI"
+        android:layout_width="90dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="28dp"
+        android:layout_marginBottom="28dp"
+        android:backgroundTint="@color/white"
+        android:fontFamily="@font/hedvig_letters_sans"
+        android:text="Sign Up"
+        android:textColor="#000000"
+        android:textSize="11sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/btnSingIn" />
+
+    <TextView
+        android:id="@+id/txtQuestion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginBottom="44dp"
+        android:fontFamily="@font/hedvig_letters_sans"
+        android:scaleX="1.5"
+        android:scaleY="1.5"
+        android:text="Don't have an account?"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="#8E8E8E"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/btnSingIn" />
+
+    <TextView
+        android:id="@+id/txtPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="23dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/ic_launcher_background"
+        android:fontFamily="@font/hedvig_letters_sans"
+        android:scaleX="1.5"
+        android:scaleY="1.5"
+        android:text="Password"
+        android:textAlignment="center"
+        android:textColor="#8E8E8E"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/editTextPasswordSI"
+        app:layout_constraintEnd_toEndOf="@+id/txtIcon"
+        app:layout_constraintStart_toStartOf="@+id/txtIcon" />
+
+    <TextView
+        android:id="@+id/txtPhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="@font/hedvig_letters_sans"
+        android:scaleX="1.5"
+        android:scaleY="1.5"
+        android:text="Phone Number"
+        android:textAlignment="center"
+        android:textColor="#8E8E8E"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/editTextPhoneSI"
+        app:layout_constraintEnd_toEndOf="@+id/txtIcon"
+        app:layout_constraintStart_toStartOf="@+id/txtIcon" />
+
+    <TextView
+        android:id="@+id/txtIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="148dp"
+        android:fontFamily="@font/hedvig_letters_sans"
+        android:scaleX="3.2"
+        android:scaleY="3.2"
+        android:text="PixCell"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextPhoneSI"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/rounded_edittext_background"
+        android:ems="10"
+        android:fontFamily="@font/hedvig_letters_sans"
+        android:inputType="phone"
+        android:scaleX="1.2"
+        android:scaleY="1.2"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/txtPassword"
+        app:layout_constraintEnd_toEndOf="@+id/txtIcon"
+        app:layout_constraintStart_toStartOf="@+id/txtIcon" />
+
+    <EditText
+        android:id="@+id/editTextPasswordSI"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="332dp"
+        android:background="@drawable/rounded_edittext_background"
+        android:ems="10"
+        android:fontFamily="@font/hedvig_letters_sans"
+        android:inputType="textPassword"
+        android:scaleX="1.2"
+        android:scaleY="1.2"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/txtIcon"
+        app:layout_constraintStart_toStartOf="@+id/txtIcon" />
+
+    <CheckBox
+        android:id="@+id/checkBoxRememberMe"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/hedvig_letters_sans"
+        android:text="Remember Me"
+        android:textColor="#8E8E8E"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPasswordSI" />
+
+    <TextView
+        android:id="@+id/txtForgotPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="32dp"
+        android:fontFamily="@font/hedvig_letters_sans"
+        android:text="Forgot Password"
+        android:textColor="#8E8E8E"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPasswordSI" />
+
+    <Button
+        android:id="@+id/btnSingIn"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:backgroundTint="@color/pixcellblue"
+        android:fontFamily="@font/hedvig_letters_sans"
+        android:text="Sign In"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/txtIcon"
+        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintStart_toStartOf="@+id/txtIcon"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPasswordSI" />
+</androidx.constraintlayout.widget.ConstraintLayout>
