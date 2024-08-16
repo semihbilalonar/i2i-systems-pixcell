@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<deployment>
+    <cluster>
+        <sitesperhost>1</sitesperhost>
+        <kfactor>0</kfactor>
+        <hostcount>1</hostcount>
+        <hosts>
+            <host>127.0.0.1</host>
+        </hosts>
+    </cluster>
+    <httpd enabled="true">
+        <jsonapi enabled="true" />
+    </httpd>
+</deployment>
