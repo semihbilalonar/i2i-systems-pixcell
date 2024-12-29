@@ -17,7 +17,6 @@ public class CommandHandler {
     private final ThreadsManager threadManager;
     private final StatsManager statsManager;
     private final DelayManager delayManager;
-    private final ActorRef actor;
 
     public CommandHandler(ThreadsManager threadManager, StatsManager statsManager, DelayManager delayManager, ActorRef actor) {
         this.threadManager = threadManager;
